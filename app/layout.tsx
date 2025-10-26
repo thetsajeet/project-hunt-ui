@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/ui/Navbar";
+import NavbarWrapper from "@/components/ui/Navbar/NavbarWrapper";
+import NextTopLoader from "nextjs-toploader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,11 +29,12 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased mx-auto w-full max-w-[1440px] dark min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased mx-auto w-full min-h-screen`}
       >
         <div className="relative">
-          <Navbar className="top-2" />
-          {children}
+          <NextTopLoader color="#f5f1e6" />
+          <NavbarWrapper />
+          <div className="max-w-[1440px] mx-auto">{children}</div>
         </div>
       </body>
     </html>

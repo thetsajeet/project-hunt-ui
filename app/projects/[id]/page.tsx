@@ -16,7 +16,7 @@ export default function ProjectPage() {
   const params = useParams<{ id: string }>();
   return (
     <div className="mt-4 flex flex-col gap-4">
-      <Card>
+      <Card className="rounded-sm">
         <CardContent>
           <div className="flex">
             <div className="flex-1 flex flex-col">
@@ -36,9 +36,9 @@ export default function ProjectPage() {
           </div>
         </CardContent>
       </Card>
-      <Card>
+      <Card className="rounded-sm">
         <CardContent className="h-[250px]">
-          <Carousel className="h-full">
+          <Carousel opts={{ loop: true }} className="h-full">
             <CarouselContent className="h-full">
               {[1, 2, 3].map((item) => {
                 return (
