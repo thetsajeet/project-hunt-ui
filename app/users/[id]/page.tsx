@@ -2,7 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Car, PlusIcon } from "lucide-react";
+import { ItemMedia } from "@/components/ui/item";
+import { Separator } from "@/components/ui/separator";
+import { PlusIcon } from "lucide-react";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 
 export default function UserPage() {
@@ -24,7 +27,7 @@ export default function UserPage() {
         <div className="col-span-12">
           <ProjectsBanner />
         </div>
-        {[...Array(4)].map((val) => (
+        {[1, 2, 3, 4, 5].map((val) => (
           <div key={val} className="col-span-3">
             <ProjectCard />
           </div>
@@ -36,16 +39,55 @@ export default function UserPage() {
 
 function ProfileCard() {
   return (
-    <Card className="w-full h-full flex justify-center items-center">
-      <CardContent>profile card</CardContent>
+    <Card className="w-full h-full flex justify-center items-center p-1">
+      <CardContent className="h-full w-full p-1">
+        <ItemMedia variant="image" className="relative w-full h-full">
+          <Image
+            src={`https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg`}
+            alt={`rabbit`}
+            fill
+            className="object-cover grayscale"
+          />
+        </ItemMedia>
+      </CardContent>
     </Card>
   );
 }
 
 function BioDataCard() {
   return (
-    <Card className="w-full h-full flex justify-center items-center">
-      <CardContent>bio data</CardContent>
+    <Card className="w-full h-full flex">
+      <CardContent className="flex flex-col">
+        <div className="space-x-1">
+          <span className="font-semibold">Name:</span>
+          <span>Ajeet T S</span>
+        </div>
+        <Separator className="my-2" />
+        <div className="space-x-1">
+          <span className="font-semibold">Role:</span>
+          <span>Software Developer Engineer 2</span>
+        </div>
+        <Separator className="my-2" />
+        <div className="space-x-1">
+          <span className="font-semibold">Location:</span>
+          <span>Pune</span>
+        </div>
+        <Separator className="my-2" />
+        <div className="space-x-1">
+          <span className="font-semibold">Contact:</span>
+          <span>ajeet.tumuluru@gmail.com</span>
+        </div>
+        <Separator className="my-2" />
+        <div className="flex row space-x-2">
+          <span className="font-semibold">Links:</span>
+          <span>github</span>
+          <Separator orientation="vertical" />
+          <span>linkedin</span>
+          <Separator orientation="vertical" />
+          <span>portfolio</span>
+        </div>
+        <Separator className="my-2" />
+      </CardContent>
     </Card>
   );
 }

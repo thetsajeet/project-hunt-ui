@@ -31,10 +31,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased mx-auto w-full min-h-screen`}
       >
-        <div className="relative">
-          <NextTopLoader color="#f5f1e6" />
+        <NextTopLoader color="#4a3f35" />
+        <div className="relative min-h-full">
           <NavbarWrapper />
-          <div className="max-w-[1440px] mx-auto">{children}</div>
+          <div className="max-w-[1440px] mx-auto h-full">{children}</div>
         </div>
       </body>
     </html>
