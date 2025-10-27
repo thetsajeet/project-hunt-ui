@@ -1,7 +1,8 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { ItemMedia } from "@/components/ui/item";
 import { Separator } from "@/components/ui/separator";
 import { PlusIcon } from "lucide-react";
@@ -112,10 +113,28 @@ function ProjectsBanner() {
 
 function ProjectCard() {
   return (
-    <Card className="w-full h-full">
-      <CardContent className="flex justify-center items-center h-32">
-        projects card
+    <Card className="w-full h-full flex flex-col">
+      <CardContent className="flex justify-center items-center h-48">
+        <ItemMedia
+          variant="image"
+          className="relative w-full h-full rounded-lg"
+        >
+          <Image
+            src={`https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg`}
+            alt={`rabbit`}
+            fill
+            className="object-cover grayscale"
+          />
+        </ItemMedia>
       </CardContent>
+      <CardFooter className="flex flex-col items-start">
+        <div>title</div>
+        <div className="flex space-x-1">
+          <Badge>Badge</Badge>
+          <Badge>Badge</Badge>
+          <Badge>Badge</Badge>
+        </div>
+      </CardFooter>
     </Card>
   );
 }
