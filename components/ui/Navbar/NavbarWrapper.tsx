@@ -12,10 +12,12 @@ export default function NavbarWrapper() {
           <Link href="/">Project Hunt</Link>
         </div>
         <div>
-          <Button className="rounded-lg cursor-pointer bg-primary text-primary-foreground shadow hover:bg-primary/90">
-            Get started
-            <ArrowRight />
-          </Button>
+          <Link href="/login">
+            <Button className="rounded-lg cursor-pointer bg-primary text-primary-foreground shadow hover:bg-primary/90">
+              Get started
+              <ArrowRight />
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

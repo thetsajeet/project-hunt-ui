@@ -24,12 +24,13 @@ export default function UserPage() {
         </div>
       </div>
       {/* second row */}
-      <div className="grid grid-cols-12 gap-1">
+      <div className="grid grid-cols-12">
         <div className="col-span-12">
           <ProjectsBanner />
         </div>
+        <Separator className="mb-3 col-span-12" />
         {[1, 2, 3, 4, 5].map((val) => (
-          <div key={val} className="col-span-3">
+          <div key={val} className="col-span-3 m-1">
             <ProjectCard />
           </div>
         ))}
@@ -95,25 +96,23 @@ function BioDataCard() {
 
 function ProjectsBanner() {
   return (
-    <Card className="w-full h-full flex py-2">
-      <CardContent className="h-full flex items-center">
-        <span className="text-lg flex-1">Projects</span>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="cursor-pointer hover:rounded-2xl"
-          aria-label="Add project"
-        >
-          <PlusIcon />
-        </Button>
-      </CardContent>
-    </Card>
+    <div className="flex">
+      <span className="text-xl flex-1">Projects</span>
+      <Button
+        variant="ghost"
+        size="icon"
+        className="cursor-pointer hover:rounded-2xl"
+        aria-label="Add project"
+      >
+        <PlusIcon />
+      </Button>
+    </div>
   );
 }
 
 function ProjectCard() {
   return (
-    <Card className="w-full h-full flex flex-col">
+    <Card className="w-full h-full flex flex-col relative transform transition-transform duration-200 ease-in-out hover:scale-103 hover:shadow-lg overflow-hidden rounded-lg">
       <CardContent className="flex justify-center items-center h-48">
         <ItemMedia
           variant="image"

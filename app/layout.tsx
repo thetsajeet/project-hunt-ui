@@ -29,12 +29,14 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased mx-auto w-full min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased mx-auto w-full h-screen`}
       >
-        <NextTopLoader color="#4a3f35" />
-        <div className="relative min-h-full">
-          <NavbarWrapper />
-          <div className="max-w-[1440px] mx-auto h-full">{children}</div>
+        <div className="h-full">
+          <NextTopLoader color="#4a3f35" />
+          <div className="relative h-full">
+            <NavbarWrapper />
+            <div className="max-w-[1440px] mx-auto h-full">{children}</div>
+          </div>
         </div>
       </body>
     </html>
