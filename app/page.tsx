@@ -1,6 +1,5 @@
 "use client";
 
-import { GlobeDemo } from "@/components/ui/GlobeDemo";
 import Link from "next/link";
 
 import { motion } from "motion/react";
@@ -78,7 +77,7 @@ export default function Home() {
           </motion.div>
         </div>
         <div className="mx-auto max-w-4xl text-center text-sm italic text-muted-foreground">
-          Cooking...
+          product is under active development.
         </div>
       </main>
     </div>
