@@ -20,6 +20,8 @@ import {
 } from "@/components/ui/select";
 import { useForm } from "react-hook-form";
 import { MinusIcon } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useEffect } from "react";
 
 type ProjectInputs = {
   title: string;
@@ -27,6 +29,11 @@ type ProjectInputs = {
     month: number;
     year: number;
   };
+  hasEndDate: boolean;
+  endDate: {
+    month: number;
+    year: number;
+  } | null;
   shortDescription: string;
   images: FileList;
 };
@@ -37,9 +44,17 @@ export default function AddProjectPage() {
     handleSubmit,
     watch,
     setValue,
+    resetField,
     formState: { errors },
-  } = useForm<ProjectInputs>();
-  const onSubmit = (data: any) => {
+  } = useForm<ProjectInputs>({
+    defaultValues: {
+      hasEndDate: true,
+    },
+  });
+  const onSubmit = (data: ProjectInputs) => {
+    if (!data.hasEndDate) {
+      data.endDate = null;
+    }
     console.log(data);
   };
   const files = watch("images") as FileList | undefined;
@@ -120,6 +135,78 @@ export default function AddProjectPage() {
                         const valNumber = parseInt(val);
                         if (isNaN(valNumber)) return;
                         setValue("startDate.year", valNumber);
+                      }}
+                    >
+                      <SelectTrigger id="startDate-year">
+                        <SelectValue placeholder="YYYY" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="2024">2024</SelectItem>
+                        <SelectItem value="2025">2025</SelectItem>
+                        <SelectItem value="2026">2026</SelectItem>
+                        <SelectItem value="2027">2027</SelectItem>
+                        <SelectItem value="2028">2028</SelectItem>
+                        <SelectItem value="2029">2029</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </Field>
+                </FieldGroup>
+              </FieldSet>
+              <Field orientation="horizontal">
+                <Checkbox
+                  onCheckedChange={(isChecked: boolean) => {
+                    setValue("hasEndDate", !isChecked);
+                  }}
+                />
+                <FieldLabel
+                  htmlFor="finder-pref-9k2-hard-disks-ljj"
+                  className="font-normal"
+                >
+                  Is this project ongoing?
+                </FieldLabel>
+              </Field>
+              <FieldSet>
+                <FieldLegend>End date</FieldLegend>
+                <FieldGroup className="grid grid-cols-4 gap-4 p-0 m-0">
+                  <Field>
+                    <Select
+                      disabled={!watch("hasEndDate")}
+                      {...(register("endDate.month"),
+                      { required: watch("hasEndDate") })}
+                      onValueChange={(val: string) => {
+                        const valNumber = parseInt(val);
+                        if (valNumber < 1 || valNumber > 12) return;
+                        setValue("endDate.month", valNumber);
+                      }}
+                    >
+                      <SelectTrigger id="startDate-month">
+                        <SelectValue placeholder="MM" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="1">01</SelectItem>
+                        <SelectItem value="2">02</SelectItem>
+                        <SelectItem value="3">03</SelectItem>
+                        <SelectItem value="4">04</SelectItem>
+                        <SelectItem value="5">05</SelectItem>
+                        <SelectItem value="6">06</SelectItem>
+                        <SelectItem value="7">07</SelectItem>
+                        <SelectItem value="8">08</SelectItem>
+                        <SelectItem value="9">09</SelectItem>
+                        <SelectItem value="10">10</SelectItem>
+                        <SelectItem value="11">11</SelectItem>
+                        <SelectItem value="12">12</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </Field>
+                  <Field>
+                    <Select
+                      disabled={!watch("hasEndDate")}
+                      {...(register("endDate.year"),
+                      { required: watch("hasEndDate") })}
+                      onValueChange={(val: string) => {
+                        const valNumber = parseInt(val);
+                        if (isNaN(valNumber)) return;
+                        setValue("endDate.year", valNumber);
                       }}
                     >
                       <SelectTrigger id="startDate-year">
