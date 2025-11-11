@@ -18,14 +18,14 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { MinusIcon } from "lucide-react";
 
 type ProjectInputs = {
   title: string;
   startDate: {
-    month: string;
-    year: string;
+    month: number;
+    year: number;
   };
   shortDescription: string;
   images: FileList;
@@ -86,20 +86,27 @@ export default function AddProjectPage() {
                 <FieldLegend>Start date</FieldLegend>
                 <FieldGroup className="grid grid-cols-4 gap-4 p-0 m-0">
                   <Field>
-                    <Select {...register("startDate.month")}>
+                    <Select
+                      {...(register("startDate.month"), { required: true })}
+                      onValueChange={(val: string) => {
+                        const valNumber = parseInt(val);
+                        if (valNumber < 1 || valNumber > 12) return;
+                        setValue("startDate.month", valNumber);
+                      }}
+                    >
                       <SelectTrigger id="startDate-month">
                         <SelectValue placeholder="MM" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="01">01</SelectItem>
-                        <SelectItem value="02">02</SelectItem>
-                        <SelectItem value="03">03</SelectItem>
-                        <SelectItem value="04">04</SelectItem>
-                        <SelectItem value="05">05</SelectItem>
-                        <SelectItem value="06">06</SelectItem>
-                        <SelectItem value="07">07</SelectItem>
-                        <SelectItem value="08">08</SelectItem>
-                        <SelectItem value="09">09</SelectItem>
+                        <SelectItem value="1">01</SelectItem>
+                        <SelectItem value="2">02</SelectItem>
+                        <SelectItem value="3">03</SelectItem>
+                        <SelectItem value="4">04</SelectItem>
+                        <SelectItem value="5">05</SelectItem>
+                        <SelectItem value="6">06</SelectItem>
+                        <SelectItem value="7">07</SelectItem>
+                        <SelectItem value="8">08</SelectItem>
+                        <SelectItem value="9">09</SelectItem>
                         <SelectItem value="10">10</SelectItem>
                         <SelectItem value="11">11</SelectItem>
                         <SelectItem value="12">12</SelectItem>
@@ -107,7 +114,14 @@ export default function AddProjectPage() {
                     </Select>
                   </Field>
                   <Field>
-                    <Select {...register("startDate.year")}>
+                    <Select
+                      {...(register("startDate.year"), { required: true })}
+                      onValueChange={(val: string) => {
+                        const valNumber = parseInt(val);
+                        if (isNaN(valNumber)) return;
+                        setValue("startDate.year", valNumber);
+                      }}
+                    >
                       <SelectTrigger id="startDate-year">
                         <SelectValue placeholder="YYYY" />
                       </SelectTrigger>
