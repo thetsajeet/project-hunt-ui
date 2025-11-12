@@ -21,7 +21,6 @@ import {
 import { useForm } from "react-hook-form";
 import { MinusIcon } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useEffect } from "react";
 
 type ProjectInputs = {
   title: string;

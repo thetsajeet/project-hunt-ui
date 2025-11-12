@@ -13,12 +13,13 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 
-type LoginInputs = {
+type RegisterInputs = {
+  username: string;
   password: string;
   email: string;
 };
 
-export function LoginForm({
+export function RegisterForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
@@ -29,8 +30,8 @@ export function LoginForm({
     setValue,
     resetField,
     formState: { errors },
-  } = useForm<LoginInputs>();
-  const onSubmit = (data: LoginInputs) => {
+  } = useForm<RegisterInputs>();
+  const onSubmit = (data: RegisterInputs) => {
     console.log(data);
   };
 
@@ -42,30 +43,43 @@ export function LoginForm({
     >
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
-          <h1 className="text-2xl font-bold">Login to your account</h1>
-          <p className="text-muted-foreground text-sm text-balance">
-            Enter your email below to login to your account
-          </p>
+          <h1 className="text-2xl font-bold">Create a new account</h1>
         </div>
         <Field>
+          <FieldLabel htmlFor="username">Username</FieldLabel>
+          <Input
+            {...register("username", { required: true })}
+            name="username"
+            id="username"
+            type="text"
+            placeholder="couch-potato"
+            required
+          />
+        </Field>
+        <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
-          <Input id="email" type="email" placeholder="m@example.com" required />
+          <Input
+            {...register("email", { required: true })}
+            id="email"
+            name="email"
+            type="email"
+            placeholder="m@example.com"
+            required
+          />
         </Field>
         <Field>
           <div className="flex items-center">
             <FieldLabel htmlFor="password">Password</FieldLabel>
-            {/* <a
-              href="#"
-              className="ml-auto text-sm underline-offset-4 hover:underline"
-            >
-              Forgot your password?
-            </a> */}
           </div>
-          <Input id="password" type="password" required />
+          <Input
+            {...register("password", { required: true })}
+            id="password"
+            type="password"
+            name="password"
+            required
+          />
         </Field>
-        <Field>
-          <Button type="submit">Login</Button>
-        </Field>
+        <Button className="cursor-pointer">Register</Button>
         {/* <FieldSeparator>Or continue with</FieldSeparator> */}
         <Field>
           {/* <Button variant="outline" type="button">
@@ -78,9 +92,9 @@ export function LoginForm({
             Login with GitHub
           </Button> */}
           <FieldDescription className="text-center">
-            Don&apos;t have an account?{" "}
-            <Link href="/register" className="underline underline-offset-4">
-              Sign up
+            Have an account?{" "}
+            <Link href="/login" className="underline underline-offset-4">
+              Login
             </Link>
           </FieldDescription>
         </Field>

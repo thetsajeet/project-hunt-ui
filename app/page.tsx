@@ -67,13 +67,15 @@ export default function Home() {
                 <ArrowRight />
               </Button>
             </Link>
-            <Button
-              size="lg"
-              className="rounded-lg cursor-pointer bg-card text-primary shadow text-xl hover:bg-card/70"
-            >
-              Upload a project
-              <Upload />
-            </Button>
+            <Link href="/projects/add">
+              <Button
+                size="lg"
+                className="rounded-lg cursor-pointer bg-card text-primary shadow text-xl hover:bg-card/70"
+              >
+                Upload a project
+                <Upload />
+              </Button>
+            </Link>
           </motion.div>
         </div>
         <div className="mx-auto max-w-4xl text-center text-sm italic text-muted-foreground">

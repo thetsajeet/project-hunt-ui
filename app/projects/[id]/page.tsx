@@ -21,7 +21,7 @@ export default function ProjectPage() {
           <div className="flex">
             <div className="flex-1 flex flex-col">
               <p>Project title</p>
-              <p className="w-90">
+              <p className="w-95">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Delectus ab accusamus, minus placeat officiis expedita earum
                 esse saepe neque dolore sit distinctio! Numquam nesciunt
@@ -29,9 +29,9 @@ export default function ProjectPage() {
               </p>
             </div>
             <div className="flex justify-self-center items-center gap-1">
-              <div>url1</div>
-              <span>|</span>
-              <div>url2</div>
+              <div>01/01</div>
+              <span>-</span>
+              <div>11/12</div>
             </div>
           </div>
         </CardContent>
