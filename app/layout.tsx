@@ -32,7 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased mx-auto w-full h-screen`}
       >
         <div className="h-full">
-          <NextTopLoader color="#4a3f35" />
+          <NextTopLoader color="#4a3f35" showSpinner={false} />
           <div className="relative h-full">
             <NavbarWrapper />
             <div className="max-w-[1440px] mx-auto h-full">{children}</div>
